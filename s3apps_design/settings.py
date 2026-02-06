@@ -129,9 +129,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Google Cloud Storage settings
 GS_BUCKET_NAME = 's3_apps'
-GS_CREDENTIALS = None  # Or use service account credentials if needed
+# Credentials are handled automatically by Google Cloud or via GOOGLE_APPLICATION_CREDENTIALS env variable
 
 STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
