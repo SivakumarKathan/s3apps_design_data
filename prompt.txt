@@ -1,0 +1,64 @@
+
+In order to keep the control myself;
+ask my approval before making any changes to the existing code snipets
+do follow only the instruction; do not perform more than the ask.
+
+Act as a Senior Python/django Developer follow high standards. 
+
+---------------------###### Step 1 #####---------------------
+inorder to develop a django web application;
+
+create a virtual environment
+start by setting up the Python environment (activate) and 
+
+install Django in the virtual environment and 
+Create requirements.txt with Django latest version
+
+create the Django project:"s3apps_design"
+
+Create app "blogs"
+Create a simple home.html page
+Create a base template
+Create CSS, JS, and other supporting files in static
+
+ #test the Django setup to ensure everything works correctly:
+ #Run Migrations to setup the database
+
+ Run the server
+
+---------------------###### Step 2 #####---------------------
+add this image "D:\Project\smartselfservices\s3apps_design_01\static\images\S3 Logo.png" as logo inside the left side of navbar
+
+provide the prompt to perform the same by Gemini AI
+Prompt:" it appears with a solid background color when used on my website. Please  make the background truly transparent . The goal is to remove the background so only the logo itself remains visible, and save the result as a PNG with transparency preserved. ensure the transparency is maintained when saving the file a, also keep the size as 60px and 80px."
+
+it reduced more space; revert it; The main content to go full width (edge-to-edge)
+
+good; now adjut the logo to the left end
+---------------------###### Step 3 #####---------------------
+update Nav bar labels as below -
+Nav Bar : keep the existing interactive Nav bar (stay on it; i prefer the bg-primary)
+		left:	display Logo(S3*.png) & show the text "Apps" -- this is already set & looks good.
+		Center: add label "Home, Stories(where blog post to showcase, show few samples), Services ( list Microservices for future releases)"
+		right: Login/logout
+
+looks nice ; instead of Center label "Home" - replace it with a home symbol for more attractive look
+use this "fa-solid fa-home" instead of Home lable
+No, still its not visible, i can see the next two labels
+
+
+Nice,Home Icon is visible; 
+but the bottom is not aligned with other two labels "Home, "Stories,Services". adjust to align bottom as same as "Stories,Services".
+increase the font size for this lables "Stories,Services".
+
+right: Login/logout , profile view after login
+
+---------------------###### Step 4 add new pages for Stories & Services #####---------------------
+create a simple Stories.html and Services.html  under "templates/blogs" by inheriting the base.html & display some relavent texts
+include appropriate links in blogs url & view files for Stories.html and Services.html
+
+in base.htmladjust the navbar-label href url links for navigate to Stories & Services pages
+	<a class="nav-link text-white navbar-label" href="#">Stories</a>
+	<a class="nav-link text-white navbar-label" href="#">Services</a>
+
+---------------------###### Step 5 #####---------------------
