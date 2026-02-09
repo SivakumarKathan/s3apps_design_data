@@ -1,0 +1,39 @@
+# .gcloudignore
+# This file specifies files and directories that should not be uploaded to Google Cloud Storage or App Engine.
+# Similar to .gitignore.
+
+# Python virtual environments
+venv/
+.env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django database
+*.sqlite3
+db.sqlite3
+
+# Static and media files (if managed elsewhere)
+staticfiles/
+media/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE/project files
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+
+# Test output
+htmlcov/
+.coverage
+
+# Node modules (if any)
+node_modules/

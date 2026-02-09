@@ -20,8 +20,8 @@
         <div class="w-100 d-flex align-items-center">
             <!-- Left: Logo & Apps -->
             <a class="navbar-brand d-flex align-items-center" href="{% url 'blogs:home' %}">
-                <img src="{% static 'images/S3_logo.png' %}" alt="S3Apps Logo" height="40" class="me-2">
-                Apps
+                <img src="{% static 'images/S3_logo.png' %}" alt="S3 Logo" height="40" class="me-2" loading="lazy" onerror="console.log('Image failed to load')">
+                S3 Apps
             </a>
             <!-- Center: Nav links -->
             <div class="mx-auto">
