@@ -33,7 +33,25 @@ def stories(request):
     """
     Stories page view
     """
-    return render(request, 'blogs/Stories.html')
+    from django.db import connection
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT * FROM gc_blogs.blog_posts ORDER BY created_at DESC LIMIT 10;')
+        columns = [col[0] for col in cursor.description]
+        rows = cursor.fetchall()
+    posts = [dict(zip(columns, row)) for row in rows]
+    return render(request, 'blogs/Stories.html', {'posts': posts})
+
+def story_detail(request, post_id):
+    """
+    Detailed view for a single blog post
+    """
+    from django.db import connection
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT * FROM gc_blogs.blog_posts WHERE id = %s', [post_id])
+        columns = [col[0] for col in cursor.description]
+        row = cursor.fetchone()
+    post = dict(zip(columns, row)) if row else None
+    return render(request, 'blogs/Stories_details.html', {'post': post})
 
 
 def services(request):

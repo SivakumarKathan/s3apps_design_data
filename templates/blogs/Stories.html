@@ -3,5 +3,26 @@
 <div class="container mt-5">
     <h2>Stories</h2>
     <p>Welcome to the Stories page! Here you will find a collection of inspiring blog posts and user stories that showcase our journey and achievements. Stay tuned for more updates and featured stories.</p>
+
+    {% if posts %}
+        <div class="row mt-4">
+            {% for post in posts %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{% url 'blogs:story_detail' post.id %}">{{ post.title }}</a>
+                        </h4>
+                        <p class="card-text">{{ post.summary|default:post.content|truncatewords:30 }}</p>
+                        <p class="text-muted mb-1">By {{ post.author }} on {{ post.created_at }}</p>
+                        <a href="{% url 'blogs:story_detail' post.id %}" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    <p>No stories found.</p>
+    {% endif %}
 </div>
 {% endblock %}
