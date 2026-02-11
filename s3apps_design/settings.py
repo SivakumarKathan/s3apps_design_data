@@ -32,7 +32,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 SECRET_KEY = 'django-insecure-cn*0(f8jk%2dw^c*og2k@w9zqmu(f8ayfh!82-=e)2m0n^ut=#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+import os
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -146,24 +147,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GS_BUCKET_NAME = 's3_apps'
 # Credentials are handled automatically by Google Cloud or via GOOGLE_APPLICATION_CREDENTIALS env variable
 
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
-        "OPTIONS": {
-            "location": "media",  # Files go into a 'media/' folder
+# Use local static files in development, GCS in production
+if DEBUG:
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+else:
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+            "OPTIONS": {
+                "location": "media",  # Files go into a 'media/' folder
+            },
         },
-    },
-    "staticfiles": {
-        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
-        "OPTIONS": {
-            "location": "static", # This forces admin/ and others into 'static/'
+        "staticfiles": {
+            "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+            "OPTIONS": {
+                "location": "static", # This forces admin/ and others into 'static/'
+            },
         },
-    },
-}
-
-STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
-MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
-
-GS_QUERYSTRING_AUTH = False
-GS_DEFAULT_ACL = 'publicRead'
+    }
+    STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
+    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
+    GS_QUERYSTRING_AUTH = False
+    GS_DEFAULT_ACL = 'publicRead'
 

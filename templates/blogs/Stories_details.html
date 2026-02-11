@@ -1,12 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/stories.css' %}?v=999">
 <div class="container mt-5">
     <h2>{{ post.title }}</h2>
     <p><strong>Author:</strong> {{ post.author }}</p>
     <p><strong>Date:</strong> {{ post.created_at }}</p>
+
+        {% if post.image1 %}
+        <div class="story-detail-image">
+        <img src="https://storage.googleapis.com/s3_apps/{{ post.image1 }}" alt="{{ post.title }}">
+        </div>
+        {% endif %}
+
     <div class="mt-4">
-        <p>{{ post.content }}</p>
+        <div>{{ post.content|safe }}</div>
     </div>
+
+        {% if post.image2 %}
+        <div class="story-detail-image">
+        <img src="https://storage.googleapis.com/s3_apps/{{ post.image2 }}" alt="{{ post.title }}">
+        </div>
+        {% endif %}
+
     <a href="{% url 'blogs:stories' %}" class="btn btn-secondary mt-3">Back to Stories</a>
 </div>
 {% endblock %}
