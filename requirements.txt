@@ -2,3 +2,5 @@ Django==6.0.2
 gunicorn
 django-storages
 google-cloud-storage
+psycopg2-binary
+google-cloud-sql-python-connector
