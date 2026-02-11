@@ -146,24 +146,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GS_BUCKET_NAME = 's3_apps'
 # Credentials are handled automatically by Google Cloud or via GOOGLE_APPLICATION_CREDENTIALS env variable
 
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
-        "OPTIONS": {
-            "location": "media",  # Files go into a 'media/' folder
+# Use local static files in development, GCS in production
+if DEBUG:
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+else:
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+            "OPTIONS": {
+                "location": "media",  # Files go into a 'media/' folder
+            },
         },
-    },
-    "staticfiles": {
-        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
-        "OPTIONS": {
-            "location": "static", # This forces admin/ and others into 'static/'
+        "staticfiles": {
+            "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+            "OPTIONS": {
+                "location": "static", # This forces admin/ and others into 'static/'
+            },
         },
-    },
-}
-
-STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
-MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
-
-GS_QUERYSTRING_AUTH = False
-GS_DEFAULT_ACL = 'publicRead'
+    }
+    STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
+    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
+    GS_QUERYSTRING_AUTH = False
+    GS_DEFAULT_ACL = 'publicRead'
 
