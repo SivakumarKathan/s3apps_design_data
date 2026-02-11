@@ -3,4 +3,4 @@ gunicorn
 django-storages
 google-cloud-storage
 psycopg2-binary
-google-cloud-sql-python-connector
+cloud-sql-python-connector[pg8000]
