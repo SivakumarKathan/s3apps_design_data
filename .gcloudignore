@@ -20,6 +20,7 @@ staticfiles/
 media/
 
 ddl/
+documents/
 
 # OS generated files
 .DS_Store

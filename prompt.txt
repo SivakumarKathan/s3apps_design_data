@@ -62,3 +62,53 @@ in base.htmladjust the navbar-label href url links for navigate to Stories & Ser
 	<a class="nav-link text-white navbar-label" href="#">Services</a>
 
 ---------------------###### Step 5 #####---------------------
+
+
+add some dummy data to display the multilevel drop down labels  for the navbar links "Stories" & "Services"
+
+the texts in the dropdown items are not clear, overlapped with each other. 2.drop down items are visible only after click the label(stories/services)- make it visible on mouse hover on top of these text
+
+excellent; while move the mouseover dropdown-item : highlight with the background color as same as navbar background color
+
+---------------------###### Step 6 #####---------------------
+current project name/root folder name is s3apps_design; rename it to s3apps and make the adjustments wherever required to work as currently
+	Get-Service -Name PostgreSQL* | Select-Object -Property Name, DisplayName, Status
+	netstat -an | Select-String "5432"
+mv s3apps_design s3apps
+
+---------------------###### Step 6.1 #####---------------------
+at present, this project is running in wsgi; convert it to run through asgi for paralel processing .
+same django app with parallel process - uvicorn
+
+
+uvicorn s3apps.asgi:application --reload
+
+looks requirements.txt containes more libraries than actually required to run this project; can you clean this file by removing unwanted files
+
+
+---------------------###### Step 7 #####---------------------
+
+user profile (~linked in)
+
+---------------------###### Step 8 #####---------------------
+with django & fast api - simple app
+
+---------------------###### Step 9 #####---------------------
+
+enable jwt
+
+---------------------###### Step 10 #####---------------------
+
+
+---------------------###### Step 11 #####---------------------
+
+---------------------###### Step 12 #####---------------------
+
+---------------------###### Step 13 #####---------------------
+
+---------------------###### Step 14 #####---------------------
+
+---------------------###### Step 15 #####---------------------
+
+
+

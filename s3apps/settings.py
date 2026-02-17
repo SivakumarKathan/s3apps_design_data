@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 's3apps_design.urls'
+ROOT_URLCONF = 's3apps.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 's3apps_design.wsgi.application'
+WSGI_APPLICATION = 's3apps.wsgi.application'
 
 
 
@@ -169,5 +169,5 @@ else:
     STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/static/'
     MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/media/'
     GS_QUERYSTRING_AUTH = False
-    GS_DEFAULT_ACL = 'publicRead'
+    # Removed GS_DEFAULT_ACL because bucket has uniform bucket-level access enabled
 

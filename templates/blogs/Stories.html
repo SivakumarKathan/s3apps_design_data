@@ -3,34 +3,33 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/stories.css' %}?v=999">
 
-<div class="container mt-5">
-    <h2>Stories</h2>
-    <p>Welcome to the Stories page! Here you will find a collection of inspiring blog posts and user stories that showcase our journey and achievements. Stay tuned for more updates and featured stories.</p>
+<div class="container mt-3">
+    <h2>Stories:</h2>
 
     {% if posts %}
-        <div class="stories-list mt-4">
-            {% for post in posts %}
-            <div class="story-item">
-                {% if post.image1 %}
-                <div class="story-item-image">
-                    <img src="https://storage.googleapis.com/s3_apps/{{ post.image1 }}" alt="{{ post.title }} thumbnail">
-                </div>
-                {% endif %}
-                
-                <div class="story-item-content">
-                    <h3 class="story-title">
-                        <a href="{% url 'blogs:story_detail' post.id %}">{{ post.title }}</a>
-                    </h3>
-                    <p class="story-meta">
-                        By <strong>{{ post.author }}</strong> on <strong>{{ post.created_at|date:"M d, Y" }}</strong>
-                    </p>
-                    <p class="story-summary">{{ post.summary|default:post.content|truncatewords:20 }}
-                    <a href="{% url 'blogs:story_detail' post.id %}" class="btn btn-primary btn-sm">Read More</a>
-                    </p>
-                </div>
+    <div class="stories-list mt-4">
+        {% for post in posts %}
+        <div class="story-item">
+            {% if post.image1 %}
+            <div class="story-item-image">
+                <img src="https://storage.googleapis.com/s3_apps/{{ post.image1 }}" alt="{{ post.title }} thumbnail">
             </div>
-            {% endfor %}
+            {% endif %}
+
+            <div class="story-item-content">
+                <h3 class="story-title">
+                    <a href="{% url 'blogs:story_detail' post.id %}">{{ post.title }}</a>
+                </h3>
+                <p class="story-meta">
+                    By <strong>{{ post.author }}</strong> on <strong>{{ post.created_at|date:"M d, Y" }}</strong>
+                </p>
+                <p class="story-summary">{{ post.summary|default:post.content|truncatewords:20 }}
+                    <a href="{% url 'blogs:story_detail' post.id %}" class="btn btn-primary btn-sm">Read More</a>
+                </p>
+            </div>
         </div>
+        {% endfor %}
+    </div>
     {% else %}
     <p>No stories found.</p>
     {% endif %}
