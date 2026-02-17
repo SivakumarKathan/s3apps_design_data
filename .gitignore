@@ -54,3 +54,5 @@ htmlcov/
 *.pyd
 
 cloud-sql-proxy.exe
+ddl/
+documents/
